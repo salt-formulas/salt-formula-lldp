@@ -1,0 +1,15 @@
+Source: salt-formula-lldp
+Maintainer: Salt Formulas Community <salt-formulas@lists.launchpad.net>
+Section: admin
+Priority: optional
+Build-Depends: salt-master, python, python-yaml, debhelper (>= 9)
+Standards-Version: 3.9.6
+Homepage: http://www.mirantis.com
+Vcs-Browser: https://github.com/salt-formulas/salt-formula-lldp
+Vcs-Git: https://github.com/salt-formulas/salt-formula-lldp.git
+
+Package: salt-formula-lldp
+Architecture: all
+Depends: ${misc:Depends}, salt-master, reclass
+Description: LLDP salt formula
+ Install and configure LLDP using lldpd package.

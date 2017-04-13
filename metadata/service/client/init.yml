@@ -1,0 +1,9 @@
+applications:
+- lldp 
+classes:
+parameters:
+  ntp:
+    client:
+      enabled: true
+      interfaces:
+      - eth0

@@ -1,0 +1,3 @@
+name: "lldp"
+version: "0.1"
+source: "https://github.com/salt-formulas/salt-formula-lldp"
