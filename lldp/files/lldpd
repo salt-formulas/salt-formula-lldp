@@ -1,0 +1,3 @@
+{%- from "lldp/map.jinja" import client with context -%}
+# Restrict lldpd to only listen and send LLDPPDU on the following interfaces
+DAEMON_ARGS="-I {{ client.interfaces|join(',') }}"
