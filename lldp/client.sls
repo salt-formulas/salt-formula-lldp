@@ -7,11 +7,9 @@ lldp_packages:
   pkg.installed:
   - name: lldpd
 
-
-{%- if grains.lsb_distrib_codename == "trusty" %}
-/etc/default/lldpd:
+{{ client.configpath }}:
   file.managed:
-  - source: salt://lldp/files/lldpd
+  - source: salt://lldp/files/{{ client.configfile }}
   - template: jinja
   - require:
     - pkg: lldp_packages
@@ -20,25 +18,8 @@ lldp_service:
   - enable: true
   - name: {{ client.service }}
   - watch:
-    - file: /etc/default/lldpd
+    - file: {{ client.configpath }}
 
-{%- endif %}
-
-{%- if grains.lsb_distrib_codename == "xenial" %}
-/etc/lldpd.d/interfaces.conf:
-  file.managed:
-  - source: salt://lldp/files/interfaces.conf
-  - template: jinja
-  - require:
-    - pkg: lldp_packages
-lldp_service:
-  service.running:
-  - enable: true
-  - name: {{ client.service }}
-  - watch:
-    - file: /etc/lldpd.d/interfaces.conf
-
-{%- endif %}
 {%- endif %}
 {%- endif %}
 {%- endif %}

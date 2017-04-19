@@ -2,4 +2,13 @@
     'Debian': {
         'service': 'lldpd',
     },
-}, merge=pillar.lldp.get('client', {})) %}
+}, merge=salt['grains.filter_by']({
+    'trusty': {
+        'configpath': '/etc/default/lldpd',
+        'configfile': 'lldpd',
+    },
+    'xenial': {
+        'configpath': '/etc/lldpd.d/interfaces.conf',
+        'configfile': 'interfaces.conf',
+    },
+}, grain='oscodename', merge=pillar.lldp.get('client', {}))) %}
