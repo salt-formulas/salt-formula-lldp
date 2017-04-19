@@ -1,7 +1,7 @@
 ---
 driver:
   name: docker
-  hostname: ntp.ci.local
+  hostname: lldp.ci.local
   use_sudo: false
 
 provisioner:
@@ -11,18 +11,18 @@ provisioner:
   salt_version: latest
   require_chef: false
   log_level: error
-  formula: ntp
+  formula: lldp
   grains:
     noservices: True
   state_top:
     base:
       "*":
-        - ntp
+        - lldp
   pillars:
     top.sls:
       base:
         "*":
-          - ntp
+          - lldp
 
 verifier:
   name: inspec
@@ -39,10 +39,6 @@ suites:
   - name: client
     provisioner:
       pillars-from-files:
-        ntp.sls: tests/pillar/client.sls
+        lldp.sls: tests/pillar/client.sls
 
-  - name: server
-    provisioner:
-      pillars-from-files:
-        ntp.sls: tests/pillar/server.sls
 # vim: ft=yaml sw=2 ts=2 sts=2 tw=125
