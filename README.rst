@@ -2,7 +2,7 @@
 LLDP 
 ====
 
-Link Layer Discovery Protocol services.
+Link Layer Discovery Protocol service.
 
 Sample pillars
 ==============
@@ -14,6 +14,7 @@ LLDP client
     lldp:
       client:
         enabled: true
+        #list of interfaces handling LLDPBPDUs
         intefaces:
         - eth0
         - eth1
