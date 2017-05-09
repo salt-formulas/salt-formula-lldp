@@ -2,8 +2,7 @@ applications:
 - lldp 
 classes:
 parameters:
-  ntp:
+  lldp:
     client:
       enabled: true
       interfaces:
-      - eth0
